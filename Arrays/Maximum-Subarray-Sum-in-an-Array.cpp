@@ -10,8 +10,8 @@ int maxSubSum(vector<int>&nums){
         int sum=0;
         for(int j=i;j<n;j++){
             sum+=nums[i];
+            maxSum = max(maxSum,sum);
         }
-        maxSum = max(maxSum,sum);
     }
     return maxSum;
 }
