@@ -19,52 +19,49 @@ void nextPermutation(vector<int> &arr)
 // than sort
 // search Linearlly
 // return next
+
 void generatePermute(vector<vector<int>> &res, vector<int> &arr, int index)
 {
-
-    // index == n than push arr into res than return
+    // Base case: if index equals array size, push current permutation
     if (index == arr.size())
     {
         res.push_back(arr);
         return;
     }
 
-    for (int i = 0; i < arr.size(); i++)
+    // Start from index to avoid duplicate permutations and unnecessary swaps
+    for (int i = index; i < arr.size(); i++)
     {
-        // swap the numbers
-        swap(arr[i], arr[index]);
-
-        generatePermute(res, arr, index + 1);
-
-        // backtrack to original one
-        swap(arr[i], arr[index]);
+        swap(arr[i], arr[index]);             // Fix element at index
+        generatePermute(res, arr, index + 1); // Recurse for next index
+        swap(arr[i], arr[index]);             // Backtrack to original state
     }
 }
 
 void nextPermutation(vector<int> &nums)
 {
     vector<vector<int>> res;
-    //generate all the possible permutation
-    generatePermute(res,nums,0);
+    generatePermute(res, nums, 0);
 
     // Sort all permutations lexicographically
     sort(res.begin(), res.end());
 
-    for(int i=0;i<nums.size();i++){
-        if(res[i]==nums){
-            // If it's not the last permutation
-            if(i<res.size()-1){
-                nums=res[i+1];
+    // Find current permutation and set nums to next lexicographic one or wrap around
+    for (int i = 0; i < res.size(); i++)
+    {
+        if (res[i] == nums)
+        {
+            if (i < res.size() - 1)
+            {
+                nums = res[i + 1];
             }
-            // If it is last permutation than store 0th index value
-            else{
-                nums=res[0];
+            else
+            {
+                nums = res[0];
             }
             break;
         }
     }
-
-
 }
 
 int main()
