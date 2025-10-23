@@ -26,7 +26,8 @@ void markCol(vector<vector<int>> &mat, int i)
         }
     }
 }
-
+// method 1
+// TC-> O(n^3)
 void setMatrixZeroes(vector<vector<int>> &mat)
 {
     // code here
@@ -53,6 +54,46 @@ void setMatrixZeroes(vector<vector<int>> &mat)
         {
             // now converting INT_MAX -> 0
             if (mat[i][j] == INT_MAX)
+            {
+                mat[i][j] = 0;
+            }
+        }
+    }
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////
+// method 2
+// TC-> O(n^2)
+void setMatrixZeroes(vector<vector<int>> &mat)
+{
+    // code here
+    int n = mat.size();
+    int m = mat[0].size();
+
+    //creating array if any place in matrix is zero 
+    // just mark as 1 in this row and col
+    vector<int> row(n, 0);
+    vector<int> col(m, 0);
+
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < m; j++)
+        {
+            // mark in that index 1
+            if (mat[i][j] == 0)
+            {
+                row[i] = 1;
+                col[j] = 1;
+            }
+        }
+    }
+
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < m; j++)
+        {
+            // if any of array having 1 just make on that place 0 in matrix
+            if (row[i] || col[j])
             {
                 mat[i][j] = 0;
             }
