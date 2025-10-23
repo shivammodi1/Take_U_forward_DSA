@@ -30,7 +30,7 @@ int cntSubarrays(vector<int> &arr, int k)
 // T.C. -> O(n)
 int findAllSubarraysWithGivenSum(vector < int > & arr, int k) {
     int n = arr.size(); // size of the given array.
-    map mpp;
+    map<int, int> mpp;
     int preSum = 0, cnt = 0;
 
     mpp[0] = 1; // Setting 0 in the map.
