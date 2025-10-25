@@ -26,8 +26,37 @@ vector<vector<int>> threeSum(vector<int> &arr)
 }
 
 
-//
+//method 2 
+// T.C ->O(n^2) not exatly n^2 it can be more than
+// TLE in this case also
+// arr[i] + arr[j] + arr[k]=0
+// arr[k] = -(arr[i]+arr[j])
+//use hasing to search the rest element in array 
+// -1 -1 -> arr[k] = -(-1-1)=2
+//now using hasing we can directly serach 2 is present or not
+
+vector<vector<int>> Sum3(vector<int>arr){
+    int n=arr.size();
+    
+    set<vector<int>>st;
+    for(int i=0;i<n;i++){
+        set<int>hashset;
+        for(int j=i+1;j<n;j++){
+            int k = -(arr[i]+arr[j]);
+            // if third element present in the hashset
+            if(hashset.find(k) != hashset.end()){
+                vector<int>tmp = {arr[i],arr[j],k};
+                sort(tmp.begin(),tmp.end());
+                st.insert(tmp);
+            }
+            hashset.insert(arr[j]);// at every time insert into hashset
+        }
+    }
+    vector<vector<int>>res(st.begin(),st.end());
+    return res;
+}
 
 int main()
 {
+
 }
