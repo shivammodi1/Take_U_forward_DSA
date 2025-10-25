@@ -2,7 +2,7 @@
 using namespace std;
 
 
-// here it will exclude the duplicates 
+// here it will not exclude the duplicates 
 void generatePermute2(vector<int>&arr,set<vector<int>>&ans,int index){
     if(index == arr.size()){
         ans.insert(arr);
