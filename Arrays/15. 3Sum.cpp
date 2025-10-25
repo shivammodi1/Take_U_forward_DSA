@@ -56,6 +56,39 @@ vector<vector<int>> Sum3(vector<int>arr){
     return res;
 }
 
+
+// method 3 
+//Optimal Solution
+// using two pointer method
+ vector<vector<int>> ThreeSum(vector<int> &arr){
+    int n=arr.size();
+    set<vector<int>>s;
+
+    sort(arr.begin(),arr.end());
+    for(int i=0;i<n;i++){
+        int st=i+1;
+        int end=n-1;
+        while(st<end){
+            int sum = arr[i]+arr[st]+arr[end];
+            // if sum==0 than store directly in set for uniqueness
+            if(sum==0){
+                vector<int>tmp = {arr[i],arr[st],arr[end]};
+                s.insert(tmp);
+                st++,end--;
+            }else if(sum<0){
+                // lesser than 0 move forward for making near 0 or equal 0
+                st++;
+            }else{
+                // Othereise more back if more than 0
+                end--;
+            }
+        }
+    }
+    vector<vector<int>>res(s.begin(),s.end());
+    return res;
+ }
+
+
 int main()
 {
 
