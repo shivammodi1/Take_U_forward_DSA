@@ -5,6 +5,8 @@
 // Explanation: Number 2 is repeated and number 4 is missing so the answer is [2,4].
 #include<bits/stdc++.h>
 using namespace std;
+
+
 class Solution {
 public:
     vector<int> findMissingAndRepeatedValues(vector<vector<int>>& grid) {
