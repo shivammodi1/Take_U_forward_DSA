@@ -31,3 +31,37 @@ class Solution {
         return -1;
     }
 };
+
+// mehtod 2:
+//using binary search
+class Solution {
+public:
+    int nthRoot(int n, int m) {
+        int st = 1;
+        int end = m;
+
+        while (st <= end) {
+            int mid = st + (end - st) / 2;
+
+            // Calculate mid^n carefully (use long long to avoid overflow)
+            long long ans = 1;
+            for (int i = 1; i <= n; i++) {
+                ans *= mid;
+                if (ans > m) break;  // Stop early if it exceeds m
+            }
+
+            if (ans == m) {
+                return mid;  // Found exact nth root
+            } 
+            else if (ans > m) {
+                end = mid - 1;  // mid^n too large → move left
+            } 
+            else {
+                st = mid + 1;  // mid^n too small → move right
+            }
+        }
+
+        return -1;  // If no integer nth root exists
+    }
+};
+
