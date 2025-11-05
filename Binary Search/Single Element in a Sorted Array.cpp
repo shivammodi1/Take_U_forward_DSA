@@ -6,6 +6,9 @@
 // Input: nums = [1,1,2,3,3,4,4,8,8]
 // Output: 2
 
+// (even index, Odd number) pair -> element is on right
+// (odd index, Even number) pair -> element is on left
+
 #include<bits/stdc++.h>
 using namespace std;
 

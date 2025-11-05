@@ -15,7 +15,7 @@ public:
                
                 s=m+1;
             }else{
-                 ans=m;
+                ans=m;
                 e=m-1;
             }
         }
