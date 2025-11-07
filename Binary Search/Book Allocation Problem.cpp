@@ -41,9 +41,9 @@ class Solution {
                     count++;          // naye student ko dena padega
                     pages = arr[i];   // naye student ke pages ka count start karein
                 } 
-                else {
+               
                     pages += arr[i];  // current student ko assign karte jao
-                }
+                
             }
 
             // Ab check karte hain kitne students lage
