@@ -1,6 +1,10 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+// Split Array Largest Sum And 
+// The Painter's Partition Problem-II 
+// both are same problems
+
 class Solution {
   public:
     int splitArray(vector<int>& arr, int k) {
