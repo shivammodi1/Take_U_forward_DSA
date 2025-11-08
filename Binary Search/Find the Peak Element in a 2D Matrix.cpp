@@ -62,6 +62,8 @@ vector<int> findPeakGridBinarySearch(vector<vector<int>> &mat)
                 maxRow = i;
         }
 
+        // Check if the maximum element is a peak
+        // Compare with left and right neighbors
         bool isLeftBigger = (midCol - 1 >= 0) && (mat[maxRow][midCol - 1] > mat[maxRow][midCol]);
         bool isRightBigger = (midCol + 1 < m) && (mat[maxRow][midCol + 1] > mat[maxRow][midCol]);
 
