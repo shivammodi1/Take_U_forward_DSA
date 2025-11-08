@@ -27,4 +27,3 @@ class Solution {
 // space complexity: O(n*m)
 
 
-// method 2: using binary search
