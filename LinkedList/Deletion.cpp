@@ -14,9 +14,14 @@ class node{
 
 // if particular node only needs to be deleted
 void deleteNode(node* delNode){
-    node* delNode->data = delNode->next->data;
+    if (!delNode || !delNode->next) {
+        // cannot delete if node is null or it's the last node
+        return;
+    }
+
     node* toDelete = delNode->next;
-    delNode->next = delNode->next->next;
+    delNode->data = toDelete->data;
+    delNode->next = toDelete->next;
     delete toDelete;
 }
 
@@ -55,7 +60,45 @@ node* deleteAtEnd(node* head){
 }
 
 // Function to delete a node at a given position (0-indexed)
+node *deleteAtPosition(node* head, int pos){
+    if(pos == 0){
+        return deleteAtFirst(head);
+    }
+    node* tmp = head;
+    for(int i=0; i<pos-1; i++){
+        if(tmp == NULL || tmp->next == NULL){
+            // position is out of bounds
+            return head;
+        }
+        tmp = tmp->next;
+    }
+    node* toDelete = tmp->next;
+    if(toDelete == NULL){
+        // position is out of bounds
+        return head;
+    }
+    tmp->next = toDelete->next;
+    delete toDelete;
+    return head;
+}
+
 
 int main(){
+    // Example usage:
+    node* head = new node(1);
+    head->next = new node(2);
+    head->next->next = new node(3);
+    head->next->next->next = new node(4);
 
+    head = deleteAtFirst(head); // Deletes node with value 1
+    head = deleteAtEnd(head);   // Deletes node with value 4
+    head = deleteAtPosition(head, 0); // Deletes node with value 2
+
+    // Print remaining list
+    node* tmp = head;
+    while(tmp){
+        cout << tmp->data << " ";
+        tmp = tmp->next;
+    }
+    return 0;
 }
