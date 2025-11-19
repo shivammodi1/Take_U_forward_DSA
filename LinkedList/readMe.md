@@ -120,3 +120,20 @@ Address:   Node
 0x2000 →  [20 | 0x3000]
 0x3000 →  [30 | NULL]
 ```
+
+# 🧠 Simple Difference in One Line
+Node → actual node (complete structure)
+
+Node* → address of a node (pointer)
+
+Node a;      // actual node
+Node* p;     // pointer to a node
+a:
++---------+-----------+
+| data    | next      |
++---------+-----------+
+
+p:
++-----------------+
+| address of a    |
++-----------------+
