@@ -128,12 +128,18 @@ Node* → address of a node (pointer)
 
 Node a;      // actual node
 Node* p;     // pointer to a node
+
+
 a:
+
+
 +---------+-----------+
 | data    | next      |
 +---------+-----------+
 
 p:
+
+
 +-----------------+
 | address of a    |
 +-----------------+
