@@ -32,7 +32,6 @@ int romanToInt(string s)
 // method 2 using if else nad vector
 int romanToInt(string s)
 {
-
     vector<int> Roman;
     for (int i = 0; i < s.length(); i++)
     {

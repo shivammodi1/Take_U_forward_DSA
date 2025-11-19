@@ -22,3 +22,18 @@ public:
     }
 };
 
+int main(){
+    string s = "egg";
+    string t = "add";
+
+    Solution sol;
+    bool ans = sol.isIsomorphic(s,t);
+
+    if(ans){
+        cout<<"The strings are isomorphic."<<endl;
+    }else{
+        cout<<"The strings are not isomorphic."<<endl;
+    }
+
+    return 0;
+}
