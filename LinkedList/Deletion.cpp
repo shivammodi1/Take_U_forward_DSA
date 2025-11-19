@@ -54,6 +54,8 @@ node* deleteAtEnd(node* head){
     return head;
 }
 
+// Function to delete a node at a given position (0-indexed)
+
 int main(){
 
 }
