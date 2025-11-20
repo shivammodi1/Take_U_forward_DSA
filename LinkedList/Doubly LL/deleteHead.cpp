@@ -49,6 +49,37 @@ Node* lastNodeDelete(Node* head){
 }
 
 // Function to delete a node at a given position in a doubly linked list
+Node *deleteAtPosition(Node* head, int pos){
+    if(!head){
+        return NULL;
+    }
+
+    // delete head
+    if(pos == 0){
+        return deleteHead(head);
+    }
+
+    Node* curr = head;
+    for(int i=0; curr && i<pos; i++){
+        curr = curr->next;
+    }
+
+    // if position is more than number of nodes
+    if(!curr){
+        return head;
+    }
+
+    // delete last node
+    if(!curr->next){
+        return lastNodeDelete(head);
+    }
+
+    // delete in between node
+    curr->prev->next = curr->next;
+    curr->next->prev = curr->prev;
+    delete curr;
+    return head;
+}
 
 // print the linked list
 void printList(Node* head) {
