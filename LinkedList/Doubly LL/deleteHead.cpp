@@ -27,6 +27,29 @@ Node *deleteHead(Node* head){
     return head;
 }
 
+// delete last node of doubly linked list
+Node* lastNodeDelete(Node* head){
+    if(!head){
+        return NULL;
+    }
+
+    // only 1 node
+    if(!head->next){
+        delete head;
+        return NULL;
+    }
+
+    Node* tmp = head;
+    while(tmp->next){
+        tmp = tmp->next;
+    }
+    tmp->prev->next = NULL;
+    delete tmp;
+    return head;
+}
+
+// Function to delete a node at a given position in a doubly linked list
+
 // print the linked list
 void printList(Node* head) {
     Node* curr = head;
