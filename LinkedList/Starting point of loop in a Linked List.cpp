@@ -24,14 +24,14 @@ public:
  */
 class Solution {
 public:
-    ListNode *detectCycle(ListNode *head) {
+    Node *detectCycle(Node *head) {
         if(!head){
         return NULL;
     }
 
     // using slow fast pointer method
-    ListNode* slow=head;
-    ListNode* fast=head;
+    Node* slow=head;
+    Node* fast=head;
     
     while(slow && fast && fast->next){
         slow=slow->next; // 1x speed
