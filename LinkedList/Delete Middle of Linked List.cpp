@@ -41,3 +41,27 @@ Node *deleteMid(Node *head)
     delete tmp;
     return head;
 }
+
+
+// method 2 using slow fast pointer
+Node *deleteMid(Node *head){
+    if (!head || !head->next)  // single node or empty list
+        return NULL;
+
+    Node* slow=head;
+    Node* fast=head;
+    Node* prev=NULL;
+
+    while(!fast && !fast->next){
+        prev=slow;
+        slow=slow->next;
+        fast=fast->next->next;
+    }
+
+    // slow is now middle node
+        prev->next = slow->next;
+        delete slow;
+
+        return head;
+
+}
