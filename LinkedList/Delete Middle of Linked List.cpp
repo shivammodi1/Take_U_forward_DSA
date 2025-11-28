@@ -16,13 +16,14 @@ public:
 
 Node *deleteMid(Node *head)
 {
-    if (!head || !head->next)  // single node or empty list
+    if (!head || !head->next) // single node or empty list
         return NULL;
 
     int count = 0;
-    Node* tmp = head;
+    Node *tmp = head;
 
-    while (tmp) {
+    while (tmp)
+    {
         count++;
         tmp = tmp->next;
     }
@@ -30,9 +31,10 @@ Node *deleteMid(Node *head)
     int mid = count / 2;
 
     tmp = head;
-    Node* prev = NULL;
+    Node *prev = NULL;
 
-    for (int i = 0; i < mid; i++) {
+    for (int i = 0; i < mid; i++)
+    {
         prev = tmp;
         tmp = tmp->next;
     }
@@ -42,26 +44,26 @@ Node *deleteMid(Node *head)
     return head;
 }
 
-
 // method 2 using slow fast pointer
-Node *deleteMid(Node *head){
-    if (!head || !head->next)  // single node or empty list
+Node *deleteMid(Node *head)
+{
+    if (!head || !head->next) // single node or empty list
         return NULL;
 
-    Node* slow=head;
-    Node* fast=head;
-    Node* prev=NULL;
+    Node *slow = head;
+    Node *fast = head;
+    Node *prev = NULL;
 
-    while(!fast && !fast->next){
-        prev=slow;
-        slow=slow->next;
-        fast=fast->next->next;
+    while (!fast && !fast->next)
+    {
+        prev = slow;
+        slow = slow->next;
+        fast = fast->next->next;
     }
 
     // slow is now middle node
-        prev->next = slow->next;
-        delete slow;
+    prev->next = slow->next;
+    delete slow;
 
-        return head;
-
+    return head;
 }
