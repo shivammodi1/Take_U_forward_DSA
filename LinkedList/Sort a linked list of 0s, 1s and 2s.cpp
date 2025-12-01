@@ -50,5 +50,19 @@ Node *sort012(Node *head){
 }
 
 int main(){
+    Node* head = new Node(1);
+    head->next = new Node(2);
+    head->next->next = new Node(0);
+    head->next->next->next = new Node(1);
+    head->next->next->next->next = new Node(2);
+    head->next->next->next->next->next = new Node(0);
 
+    head = sort012(head);
+
+    Node* temp = head;
+    while(temp){
+        cout << temp->data << " ";
+        temp = temp->next;
+    }
+    return 0;
 }
