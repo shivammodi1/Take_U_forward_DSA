@@ -28,3 +28,4 @@ int main(){
     cout<<"Factorial of "<<n<<" is "<<fact(n)<<endl;
     return 0;
 }
+

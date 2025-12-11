@@ -13,6 +13,26 @@ bool isPalindrome(string s,int st,int end){
     return isPalindrome(s,st+1,end-1);
 }
 
+// Recursion Tree
+/*
+                    isPalindrome(s,0,6)
+                        /          \
+               s[0]==s[6]?      false
+                   /   \
+         isPalindrome(s,1,5)
+              /        \
+        s[1]==s[5]?   false
+            /   \
+  isPalindrome(s,2,4)
+       /        \
+ s[2]==s[4]?   false
+     /   \
+isPalindrome(s,3,3)
+        /      \
+    true     false 
+Base Case: st >= end  => true
+*/
+
 
 int main(){
     string s = "racecar";
