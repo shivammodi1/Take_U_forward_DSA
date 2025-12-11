@@ -28,6 +28,21 @@ void findSubsequences(int curr, vector<int> &arr,vector<int> &subarr, vector<vec
     findSubsequences(curr + 1, arr, subarr, res);
 }
 
+// recursion tree
+//                                []
+//                          /               \
+//                     take 3               not take 3
+//                      /                       \
+//                    [3]                        []
+//               /            \             /            \
+//          take 1        not take 1   take 1        not take 1
+//           /                \           /               \
+//        [3,1]              [3]        [1]               []
+//        /     \          /    \      /    \           /     \
+//  take 2   not 2   take 2  not 2  take 2  not 2   take 2   not 2
+//    |         |       |       |      |       |        |         |
+// [3,1,2]   [3,1]   [3,2]    [3]    [1,2]    [1]      [2]        []
+
 
 int main()
 {
