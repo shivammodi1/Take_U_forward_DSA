@@ -3,7 +3,7 @@ using namespace std;
 
 void Merge(vector<int> &arr, int st, int mid, int end)
 {
-    int n1 = mid - st + 1;
+    int n1 = mid - st + 1; 
     int n2 = end - mid;
 
     vector<int> left(n1);
