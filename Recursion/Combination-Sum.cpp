@@ -24,7 +24,7 @@ vector<vector<int>> combinationSum(vector<int>& arr, int target) {
         vector<vector<int>> res;
         vector<int> subarr;
        
-        Helper(0,arr,subarr,resu,target,0);
+        Helper(0,arr,subarr,res,target,0);
         return res;
 
 }
@@ -33,8 +33,8 @@ vector<vector<int>> combinationSum(vector<int>& arr, int target) {
 
 // Helper(0, [], 0)
 // │
-// ├── Pick 2
-// │   Helper(0, [2], 2)
+// ├── Pick 2     
+// │   Helper(0, [2], 2)    index  subarr  currSum
 // │   │
 // │   ├── Pick 2
 // │   │   Helper(0, [2,2], 4)
@@ -56,7 +56,7 @@ vector<vector<int>> combinationSum(vector<int>& arr, int target) {
 // │
 // └── Not Pick
 //     Helper(1, [], 0)
-//    │
+//   │
 //   ├── Pick 3
 //   │   Helper(1, [3], 3)
 //   │   │
