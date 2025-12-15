@@ -1,8 +1,22 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-vector<int> subsetSums(vector<int>& arr){
+void Helper(int index, vector<int> &arr, int sum, vector<int> &res){
+    if(index == arr.size()){
+        // if index is at last, push the sum to result
+        res.push_back(sum);
+        return;
+    }
+    // pick the element
+    Helper(index + 1, arr, sum + arr[index], res);
+    // not pick the element
+    Helper(index + 1, arr, sum, res);
+}
 
+vector<int> subsetSums(vector<int>& arr){
+    vector<int> res;
+    Helper(0, arr, 0, res);
+    return res;
 }
 
 int main(){
