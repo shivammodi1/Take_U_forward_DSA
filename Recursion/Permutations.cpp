@@ -2,14 +2,16 @@
 using namespace std;
 // Input: nums = [1,2,3]
 // Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
-// 
-//                            [1,2,3]
-//                /               |               \
-//             [2,3]            [1,3]            [1,2]
-//          /    \              /   \             /    \
-//        [3]    [2]        [3]     [1]       [2]     [1]
-//       /        \        /         \      /         \
-//     []          []    []           []   []           []
+// [1 2 3]
+//  → [1 _ _] → [1 2 _] → [1 2 3] ✔
+//            → [1 3 _] → [1 3 2] ✔
+
+//  → [2 _ _] → [2 1 _] → [2 1 3] ✔
+//            → [2 3 _] → [2 3 1] ✔
+
+//  → [3 _ _] → [3 2 _] → [3 2 1] ✔
+//            → [3 1 _] → [3 1 2] ✔
+
 // at the leaf nodes we have our permutations
 // Time Complexity: O(N*N!) where N is the number of elements in the input array.
 // Space Complexity: O(N) for the recursion stack and O(N!) for storing all the
@@ -27,6 +29,8 @@ void Helper(vector<int>& nums,int index,vector<vector<int>>& res){
         swap(nums[index],nums[i]); // backtracking
     }
 }
+
+
 
 vector<vector<int>> permute(vector<int>& nums){
     int index = 0;
