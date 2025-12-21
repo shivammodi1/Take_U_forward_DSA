@@ -19,10 +19,24 @@ using namespace std;
 // step 3: if current index + nums[current index] >= goal, update goal to current index
 // step 4: finally check if goal is 0, if yes return true else false
 //------------------------------------------------------------------------------------------------------------------------------------------
-bool canJump(vector<int>& nums){
 
+bool canJump(vector<int>& nums){
+    int n = nums.size();
+    int goal = n-1;
+    for(int i=n-2; i>=0; i--){
+        if(i + nums[i] >= goal){
+            goal = i;
+        }
+    }
+    if(goal == 0){
+        return true;
+    }
+    return false;
 }
 
 int main(){
+    vector<int> nums = {2,3,1,1,4};
+    bool result = canJump(nums);
+    cout << "Can reach the last index: " << (result ? "true" : "false") << endl;
     return 0;
 }
