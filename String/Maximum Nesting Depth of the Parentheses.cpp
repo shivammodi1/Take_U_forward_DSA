@@ -28,6 +28,11 @@ int maxDepth(string s)
     return ans;
 }
 
+// output the maximum nesting depth for a sample input
+// Example usage
+// Input: s = "(1+(2*3)+((8)/4))+1"
+// Output: 3
+
 int main()
 {
     string s = "(1+(2*3)+((8)/4))+1";
