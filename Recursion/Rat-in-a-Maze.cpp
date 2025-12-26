@@ -1,8 +1,23 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-vector<string> ratInMaze(vector<vector<int>>& maze){
+bool isSafe(int x, int y, int n, vector<vector<int>>& maze, vector<vector<bool>>& visited){
+    if((x>=0 && x<n) && (y>=0 && y<n) && maze[x][y]==1 && !visited[x][y]){
+        return true;
+    }
+    return false;
+}
 
+void Solve(int x, int y, int n, vector<vector<int>>& maze, vector<string>& result, string path, vector<vector<bool>>& visited){
+    
+}
+
+vector<string> ratInMaze(vector<vector<int>>& maze){
+    vector<string> result;
+    int n = maze.size();
+    vector<vector<bool>> visited(n, vector<bool>(n, false));
+    Solve(0, 0, n, maze, result, "", visited);
+    return result;
 }
 
 int main(){
@@ -24,4 +39,4 @@ int main(){
 //            [1, 1, 0, 0],
 //            [0, 1, 1, 1] ]
 
-// Output: ["DDRDRR", "DRDDRR"]
+// Output: ["DDRDRR", "DRD DRR"] 
