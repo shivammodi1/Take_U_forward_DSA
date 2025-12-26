@@ -1,18 +1,54 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-
-bool isSafe(int x, int y, int n, vector<vector<int>>& maze, vector<vector<bool>>& visited){
-    if((x>=0 && x<n) && (y>=0 && y<n) && maze[x][y]==1 && !visited[x][y]){
+// Function to check whether the next cell is safe to move
+bool isSafe(int x, int y, int n, vector<vector<int>> &maze, vector<vector<bool>> &visited)
+{
+    // Check boundaries, path availability, and visited status
+    if ((x >= 0 && x < n) && (y >= 0 && y < n) && maze[x][y] == 1 && !visited[x][y])
+    {
         return true;
     }
     return false;
 }
 
-void Solve(int x, int y, int n, vector<vector<int>>& maze, vector<string>& result, string path, vector<vector<bool>>& visited){
-    
+// Direction characters in lexicographical order: D L R U
+vector<char> moveDir = {'D', 'L', 'R', 'U'};
+
+// Corresponding row movement for D, L, R, U
+vector<int> row = {1, 0, 0, -1};
+
+// Corresponding column movement for D, L, R, U
+vector<int> col = {0, -1, 1, 0};
+
+void Solve(int x, int y, int n, vector<vector<int>> &maze, vector<string> &result, string path, vector<vector<bool>> &visited)
+{
+    if (x == n - 1 && y == n - 1)
+    {
+        // Reached destination
+        result.push_back(path);
+        return;
+    }
+
+    // Mark the cell as visited
+    visited[x][y] = true;
+    // Explore all 4 directions
+    for (int i = 0; i < 4; i++)
+    {
+        // Current cell se next direction me move karne ke liye
+        int newX = x + rowDir[i];
+        int newY = y + colDir[i];
+        if (isSafe(newX, newY, n, maze, visited))
+        {
+            // Move to the next cell
+            Solve(newX, newY, n, maze, result, path + moveDir[i], visited);
+        }
+    }
+    // Backtrack: Unmark the cell as visited
+    visited[x][y] = false;
 }
 
-vector<string> ratInMaze(vector<vector<int>>& maze){
+vector<string> ratInMaze(vector<vector<int>> &maze)
+{
     vector<string> result;
     int n = maze.size();
     vector<vector<bool>> visited(n, vector<bool>(n, false));
@@ -20,12 +56,13 @@ vector<string> ratInMaze(vector<vector<int>>& maze){
     return result;
 }
 
-int main(){
+int main()
+{
     return 0;
 }
 
-// Consider a rat placed at position (0, 0) in an n x n square matrix maze[][]. 
-// The rat's goal is to reach the destination at position (n-1, n-1). 
+// Consider a rat placed at position (0, 0) in an n x n square matrix maze[][].
+// The rat's goal is to reach the destination at position (n-1, n-1).
 // The rat can move in four possible directions: 'U'(up), 'D'(down), 'L' (left), 'R' (right).
 // The matrix contains only two possible values:
 // 0: A blocked cell through which the rat cannot travel.
@@ -39,4 +76,4 @@ int main(){
 //            [1, 1, 0, 0],
 //            [0, 1, 1, 1] ]
 
-// Output: ["DDRDRR", "DRD DRR"] 
+// Output: ["DDRDRR", "DRD DRR"]
