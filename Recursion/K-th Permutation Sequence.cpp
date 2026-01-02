@@ -9,6 +9,23 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+void Permute(vector<string>& num,int index,string &curr,vector<int>& result){
+    
+}
+
+string getPermutation(int n, int k)
+{
+    vector<string> num;
+    for(int i=1;i<=n;i++){
+        num.push_back(to_string(i));
+    }
+
+    vector<string> result;
+    int index = 0;
+    string curr="";
+    Permute(num,index,curr,result);
+}
+
 int main()
 {
     return 0;
