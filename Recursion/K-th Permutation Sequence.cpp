@@ -9,22 +9,41 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void Permute(vector<string>& num,int index,string &curr,vector<int>& result){
-    
+// Method 1: Generate all permutations and return k-1 th indexed permutation
+// Time Complexity: O(n*n!)
+// Space Complexity: O(n!)
+// It will give TLE for large n
+void Permute(string &num,int index,vector<string>& result){
+    if(index==num.size()){
+        result.push_back(num);
+        return;
+    }
+
+    for(int i=index;i<num.size();i++){
+        swap(num[index],num[i]);
+        Permute(num,index+1,result);
+        swap(num[index],num[i]);
+    }
 }
 
 string getPermutation(int n, int k)
 {
-    vector<string> num;
+    string num;
     for(int i=1;i<=n;i++){
-        num.push_back(to_string(i));
+        num+=to_string(i);
     }
 
     vector<string> result;
     int index = 0;
-    string curr="";
-    Permute(num,index,curr,result);
+    Permute(num,index,result);
+    // sort the result to get lexicographical order
+    sort(result.begin(),result.end());
+    return result[k-1]; // k-1 for 0 based indexing
 }
+
+
+// Method 2: Optimal Approach using Factorial Number System
+// Time Complexity: O(n^2)
 
 int main()
 {
