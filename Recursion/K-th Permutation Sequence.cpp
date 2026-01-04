@@ -130,5 +130,8 @@ string getPermutationOptimal(int n, int k)
 
 int main()
 {
+    int n = 4, k = 17;
+    cout << getPermutationOptimal(n, k) << endl; // Output: "3412"
+    
     return 0;
 }
