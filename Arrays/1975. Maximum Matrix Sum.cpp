@@ -14,6 +14,14 @@ using namespace std;
 // - Multiply the 2 elements in the first row by -1.
 // - Multiply the 2 elements in the first column by -1.
 
+
+// Method to find maximum matrix sum
+// 1. First, we will calculate the sum of absolute values of all elements in the matrix.
+// 2. We will also count the number of negative elements in the matrix and find the minimum absolute value among all elements.
+// 3. If the count of negative elements is even, we can convert all negative elements to positive, and the maximum sum will be the sum of absolute values.
+// 4. If the count of negative elements is odd, we have to leave one negative element. To maximize the sum, we should leave the element with the smallest absolute value. 
+// Therefore, we subtract twice the minimum absolute value from the total sum of absolute values to get the maximum sum.
+
 long long maxMatrixSum(vector<vector<int>> &mat)
 {
     int n - mat.size();
@@ -41,6 +49,7 @@ long long maxMatrixSum(vector<vector<int>> &mat)
         return sum - 2*minAbs; 
     }
 }
+
 
 int main()
 {
