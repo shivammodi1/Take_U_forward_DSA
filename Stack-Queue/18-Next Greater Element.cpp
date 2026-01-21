@@ -7,7 +7,7 @@ vector<int> nextLargerElement(vector<int>& arr){
     int n = arr.size();
     for(int i=n-1;i>=0;i--){
         if(s.empty()){
-            s,push(arr[i]);
+            s.push(arr[i]);
         }else{
             while(!s.empty() && s.top() <= arr[i]){
                 s.pop();
@@ -21,6 +21,9 @@ vector<int> nextLargerElement(vector<int>& arr){
     
     return res;
 }
+
+// serach in circular array
+
 
 int main(){
     vector<int> arr = {4,5,2,25};
