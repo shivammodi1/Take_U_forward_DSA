@@ -3,6 +3,11 @@ using namespace std;
 
 // Function to convert prefix expression to postfix expression
 string prefixToPostfix(string prefix){
+    //start from right end of prefix expression
+    // if operand push to stack
+    // if operator pop two operands from stack
+    // concatenate them in order operand1 + operand2 + operator
+    // push the result back to stack
     stack<string> s;
     for(int i = prefix.length() - 1; i >= 0; i--){
         char ch = prefix[i];

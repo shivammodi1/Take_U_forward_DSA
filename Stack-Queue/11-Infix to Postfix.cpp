@@ -1,126 +1,65 @@
-class Solution {
-  public:
-  
-  int precedence(char op) {
-    if(op == '+' || op == '-') return 1;
-    if(op == '*' || op == '/') return 2;
-    if(op == '^') return 3;
-    return 0;
-  }
+#include<bits/stdc++.h>
+using namespace std;
 
-  string infixToPrefix(string &s) {
-        int n = s.length();
+int precedence(char ch){
+    if(ch == '^') return 3;
+    if(ch == '*' || ch == '/') return 2;
+    if(ch == '+' || ch == '-') return 1;
+    return -1;
+}
 
-        // Step 1: reverse
-        reverse(s.begin(), s.end());
+// Function to convert infix expression to postfix expression
+// Time Complexity: O(N)
+// Space Complexity: O(N)
 
-        // Step 2: swap brackets
-        for(int i = 0; i < n; i++){
-            if(s[i] == '(') s[i] = ')';
-            else if(s[i] == ')') s[i] = '(';
+// example:
+// Input:  a*(b+c)/d
+// Output: abc+*d/
+
+string infixToPostfix(string s){
+    stack<char> st;
+    string result;
+    int i = 0;
+
+    while(i < s.length()){
+        char ch = s[i];
+        // If the character is an operand, add it to output
+        if((ch >= 'a' && ch <= 'z') ||
+           (ch >= 'A' && ch <= 'Z') ||
+           (ch >= '0' && ch <= '9')){
+            result += ch;
         }
-
-        // Step 3: infix to postfix
-        stack<char> st;
-        string result = "";
-
-        for(char c : s){
-
-            if(isalnum(c)){
-                result += c;
-            }
-            else if(c == '('){
-                st.push(c);
-            }
-            else if(c == ')'){
-                while(!st.empty() && st.top() != '('){
-                    result += st.top();
-                    st.pop();
-                }
+        else if(ch == '('){
+            st.push(ch);
+        }
+        else if(ch == ')'){
+            while(!st.empty() && st.top() != '('){
+                result += st.top();
                 st.pop();
             }
-            else{
-                while(!st.empty() &&
-                     (precedence(st.top()) > precedence(c) ||
-                     (precedence(st.top()) == precedence(c) && c == '^')))
-                {
-                    result += st.top();
-                    st.pop();
-                }
-                st.push(c);
-            }
+            st.pop(); // pop the '(' from the stack
         }
-
-        while(!st.empty()){
-            result += st.top();
-            st.pop();
-        }
-
-        // Step 4: reverse postfix → prefix
-        reverse(result.begin(), result.end());
-        return result;
-    }
-};
-class Solution {
-  public:
-  
-  int precedence(char op) {
-    if(op == '+' || op == '-') return 1;
-    if(op == '*' || op == '/') return 2;
-    if(op == '^') return 3;
-    return 0;
-  }
-
-  string infixToPrefix(string &s) {
-        int n = s.length();
-
-        // Step 1: reverse
-        reverse(s.begin(), s.end());
-
-        // Step 2: swap brackets
-        for(int i = 0; i < n; i++){
-            if(s[i] == '(') s[i] = ')';
-            else if(s[i] == ')') s[i] = '(';
-        }
-
-        // Step 3: infix to postfix
-        stack<char> st;
-        string result = "";
-
-        for(char c : s){
-
-            if(isalnum(c)){
-                result += c;
-            }
-            else if(c == '('){
-                st.push(c);
-            }
-            else if(c == ')'){
-                while(!st.empty() && st.top() != '('){
-                    result += st.top();
-                    st.pop();
-                }
+        else{
+            // operator encountered
+            while(!st.empty() &&
+                 (precedence(st.top()) > precedence(ch) ||
+                 (precedence(st.top()) == precedence(ch) && ch != '^'))){
+                result += st.top();
                 st.pop();
             }
-            else{
-                while(!st.empty() &&
-                     (precedence(st.top()) > precedence(c) ||
-                     (precedence(st.top()) == precedence(c) && c == '^')))
-                {
-                    result += st.top();
-                    st.pop();
-                }
-                st.push(c);
-            }
+            st.push(ch);
         }
-
-        while(!st.empty()){
-            result += st.top();
-            st.pop();
-        }
-
-        // Step 4: reverse postfix → prefix
-        reverse(result.begin(), result.end());
-        return result;
+        i++;
     }
-};
+
+    while(!st.empty()){
+        result += st.top();
+        st.pop();
+    }
+    return result;
+}
+
+int main(){
+    string s = "a*(b+c)/d";
+    cout << infixToPostfix(s);
+}

@@ -6,6 +6,12 @@ using namespace std;
 
 string preficToInfix(string s)
 {
+    // start from right end of prefix expression
+    // if operand push to stack
+    // if operator pop two operands from stack
+    // concatenate them in order (operand1 operator operand2)
+    // push the result back to stack
+    
     stack<string> st;
     int n = s.length();
     int i=n-1;

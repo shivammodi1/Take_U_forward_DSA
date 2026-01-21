@@ -4,6 +4,11 @@ using namespace std;
 // postfix to infix conversion
 
 string postfixToInfix(string s){
+    // start from left end of postfix expression
+    // if operand push to stack
+    // if operator pop two operands from stack
+    // concatenate them in order (operand1 operator operand2)
+    // push the result back to stack
     stack<string>st;
     int n = s.length();
     int i=0;

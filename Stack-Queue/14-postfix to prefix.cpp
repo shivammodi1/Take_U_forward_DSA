@@ -3,6 +3,11 @@ using namespace std;
 
 // Function to convert postfix expression to prefix expression
 string postfixToPrefix(string postfix){
+    // start from left end of postfix expression
+    // if operand push to stack
+    // if operator pop two operands from stack
+    // concatenate them in order operator + operand2 + operand1
+    // push the result back to stack
     stack<string> s;
     for(char ch : postfix){
         if((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z') || (ch >= '0' && ch <= '9')){
