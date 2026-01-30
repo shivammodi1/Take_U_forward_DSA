@@ -39,6 +39,114 @@ int subArrayRangeSum(vector<int>& arr){
 // jo ki humne pichle question me kiya hain 
 
 
+// 1. sum of subarray maximums
+void findPGE(vector<int> &arr, vector<int>& left){
+    int n = arr.size();
+    stack<int> s;
+
+    for(int i=0;i<n;i++){
+        while(!s.empty() && arr[s.top()] < arr[i]){
+            s.pop();
+        }
+        if(s.empty()){
+            left[i] = -1;
+        }else{
+            left[i] = s.top();
+        }
+        s.push(i);
+    }
+}
+
+void findNGE(vector<int> &arr, vector<int>& right){
+    int n = arr.size();
+    stack<int> s;
+
+    for(int i=n-1;i>=0;i--){
+        while(!s.empty() && arr[s.top()] <= arr[i]){
+            s.pop();
+        }
+        if(s.empty()){
+            right[i] = n;
+        }else{
+            right[i] = s.top();
+        }
+        s.push(i);
+    }
+}
+
+int subArrayMaxSum(vector<int>& arr){
+    int n = arr.size();
+    vector<int> left(n), right(n);
+    findPGE(arr, left);
+    findNGE(arr, right);
+
+    long long totalSum = 0;
+    for(int i=0;i<n;i++){
+        int countLeft = i - left[i];
+        int countRight = right[i] - i;
+        long long contribution = (long long)arr[i] * countLeft * countRight;
+        totalSum += contribution;
+    }
+    return totalSum;
+}
+
+// 2. sum of subarray minimums
+
+void findPSE(vector<int>& arr, vector<int>& left){
+    int n = arr.size();
+    stack<int> st;
+    for(int i=0;i<n;i++){
+        while(!st.empty() && arr[st.top()] > arr[i]){
+            st.pop();
+        }
+        if(st.empty()){
+            left[i] = -1;
+        }else{
+            left[i] = st.top();
+        }
+        st.push(i);
+    }
+}
+
+void findNSE(vector<int>& arr, vector<int>& right){
+    int n = arr.size();
+    stack<int> st;
+    for(int i=n-1;i>=0;i--){
+        while(!st.empty() && arr[st.top()] >= arr[i]){
+            st.pop();
+        }
+        if(st.empty()){
+            right[i] = n;
+        }else{
+            right[i] = st.top();
+        }
+        st.push(i);
+    }
+}
+
+int sumSubarrayMins(vector<int>& arr) {
+    int n = arr.size();
+    vector<int> left(n), right(n);
+    findPSE(arr, left);
+    findNSE(arr, right);
+
+    int mod = 1e9 + 7;
+    int totalSum = 0;
+    for(int i=0;i<n;i++){
+        int countLeft = i - left[i];
+        int countRight = right[i] - i;
+        long long contribution = (long long)arr[i] * countLeft * countRight;
+        totalSum = (totalSum + contribution) % mod;
+    }
+    return totalSum;
+}
+
+// final function to get sum of subarray ranges
+int subArrayRangeSum(vector<int>& arr){
+    long long maxSum = subArrayMaxSum(arr);
+    long long minSum = sumSubarrayMins(arr);
+    return maxSum - minSum;
+}
 
 int main(){
     return 0;
