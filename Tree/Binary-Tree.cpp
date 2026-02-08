@@ -35,16 +35,6 @@ Node* createNode(){
     return newNode;
 }
 
-// print the tree in pre-order traversal
-void preOrder(Node* root){
-    if(root==NULL){
-        return;
-    }
-
-    cout<<root->data<<" ";
-    preOrder(root->left);
-    preOrder(root->right);
-}
 
 int main(){
 
