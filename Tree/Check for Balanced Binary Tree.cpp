@@ -5,41 +5,28 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-struct Node{
-    int data;
-    Node* left;
-    Node* right;
 
-    Node(int val){
-        data = val;
-        left = NULL;
-        right = NULL;
-    }
-};
-
-int Height(Node* root){
-    if(root == NULL){
+int height(TreeNode* root,bool &valid){
+    if(!root){
         return 0;
     }
-    int leftH = Height(root->left);
-    int rightH = Height(root->right);
-    return max(leftH, rightH) + 1;
-}
 
-bool isBalanced(Node* root){
-    if(root == NULL){
-        return true;
+    int l = height(root->left, valid);
+    int r = height(root->right, valid);
+
+    if(abs(l - r) > 1){
+        valid = 0;
     }
 
-    int leftH = Height(root->left);
-    int rightH = Height(root->right);
-
-    if(abs(leftH - rightH) > 1){
-        return false;
-    }
-
-    return isBalanced(root->left) && isBalanced(root->right);
+    return 1 + max(l, r);
 }
+
+bool isBalanced(TreeNode* root) {
+    bool valid = 1;
+    height(root, valid);
+    return valid;
+}
+
 
 int main(){
     return 0;
