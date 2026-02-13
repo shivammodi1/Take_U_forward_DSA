@@ -19,7 +19,7 @@ public:
 // left node traversal
 void Left_Subtree(Node *root, vector<int> &ans)
 {
-    if (!root || !root->left || !root->right)
+    if (!root || (!root->left && !root->right))
     {
         return;
     }
@@ -37,7 +37,7 @@ void Left_Subtree(Node *root, vector<int> &ans)
 // Right node traversal
 void Right_Subtree(Node *root, vector<int> &ans)
 {
-    if (!root || !root->left || !root->right)
+    if (!root || (!root->left && !root->right))
     {
         return;
     }
@@ -54,7 +54,7 @@ void Right_Subtree(Node *root, vector<int> &ans)
 }
 
 // leaf node traversal
-void Leaf_sub(Node *root, vector<int> &ans)
+void Leaf_Node(Node *root, vector<int> &ans)
 {
     if (!root)
     {
@@ -67,9 +67,9 @@ void Leaf_sub(Node *root, vector<int> &ans)
         return;
     }
 
-    Leaf_sub(root->left, ans);
+    Leaf_Node(root->left, ans);
 
-    Leaf_sub(root->right, ans);
+    Leaf_Node(root->right, ans);
 }
 
 vector<int> boundaryTraversal(Node *root)
