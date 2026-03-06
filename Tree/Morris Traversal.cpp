@@ -17,7 +17,7 @@ class Node{
 };
 
 void MorrisTraversal(Node* root){
-    // Base Case
+    // Base Case 
     if(root == NULL) return;
 
     // current pointer
