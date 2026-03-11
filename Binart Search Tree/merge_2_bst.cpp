@@ -47,14 +47,14 @@ vector<int> mergeArray(vector<int> &A, vector<int> &B)
     return merged;
 }
 // inorder traversal 
-void Inorder(TreeNode *root, vector<int> &inorder)
+void Inorder(Node *root, vector<int> &inorder)
 {
     if (root == NULL)
     {
         return;
     }
     Inorder(root->left, inorder);
-    inorder.push_back(root->val);
+    inorder.push_back(root->data);
     Inorder(root->right, inorder);
 }
 // function sorted array to bst
@@ -71,7 +71,7 @@ Node* arrayToBST(vector<int> &arr,int st,int end){
 }
 
 
-Node *mergeBST(TreeNode *root1, TreeNode *root2)
+Node *mergeBST(Node *root1, Node *root2)
 {
     vector<int> inorder1, inorder2;
     // get the in-order traversal of both BSTs
@@ -80,6 +80,7 @@ Node *mergeBST(TreeNode *root1, TreeNode *root2)
     // merge the two vector in sorted order
     vector<int> merged = mergeArray(inorder1, inorder2);
     // Construct a new BST from the merged vector
+    return arrayToBST(merged, 0, merged.size() - 1);
 }
 
 int main()
