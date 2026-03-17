@@ -74,6 +74,49 @@ public:
         }
         cout<<endl;
     }
+
+    // Heapify function to maintain min heap property
+    void minHeapify(int index){
+        int smallest = index; // assume current index is smallest
+        int left = 2*index + 1; // left child index
+        int right = 2*index + 2; // right child index
+
+        // Check if left child exists and is smaller than current smallest
+        if(left < size && arr[left] < arr[smallest]){
+            smallest = left;
+        }
+
+        // Check if right child exists and is smaller than current smallest
+        if(right < size && arr[right] < arr[smallest]){
+            smallest = right;
+        }
+
+        // If smallest is not the current index, swap and heapify
+        if(smallest != index){
+            swap(arr[index], arr[smallest]);
+            minHeapify(smallest); // Recursively heapify the affected subtree
+        }
+    }
+
+    // get min value function
+    int getMin(){
+        return arr[0]; // root par min value hoti hai
+    }
+    // // delete min value function
+    void deleteMin(){
+        if(size == 0){
+            cout<<"Heap is empty"<<endl;
+            return;
+        }
+
+        arr[0] = arr[size-1]; // last element ko root par le aao
+        size--; // size reduce karo
+
+        // min heapify to maintain heap property
+        minHeapify(0);
+    }
+    
+
 };
 
 int main(){
