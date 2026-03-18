@@ -26,6 +26,12 @@ int kthLargest(vector<int>& nums,int k){
     return ans;
 }
 
+
+
+/*
+    Approach 2: Using Min Heap
+*/
+
 int main(){
     return 0;
 }
