@@ -24,7 +24,7 @@ class Solution {
 public:
     Node* mergeKLists(vector<Node*>& arr) {
 
-        // min heap (IMPORTANT FIX)
+        // min heap
         priority_queue<int, vector<int>, greater<int>> pq;
 
         int n = arr.size();
