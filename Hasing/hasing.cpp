@@ -45,6 +45,15 @@
         Cons:
             - Extra memory use hota hai
 
+    ================ Load Factor =====================
+    - performance of chaning 
+       M = no. of slots in Hash Table
+       N = no. of keys to be inserted
+        
+    - Load factor (α) = N/M
+    - We want to be load factor to be small.
+    ===================================================
+
     2. Open Addressing
         - Saare elements table ke andar hi store hote hain
         - Collision par naya empty slot find karte hain
@@ -107,4 +116,4 @@
     - Caching
     - Password hashing
 
-*/
+*/ 
