@@ -92,6 +92,7 @@ int main(){
 
     int arr[n];
 
+    // memset(array_name, value, size_in_bytes);
     memset(hash, false, sizeof(hash));// Initialize hash table
 
     for(int i = 0; i < n; i++){
