@@ -114,5 +114,26 @@ int main() {
     // erase element
     s.erase(50);
 
+    // check if element is erased
+    if(s.find(50) != s.end()) {
+        cout << "Found" << endl;
+    } else {
+        cout << "Not Found" << endl;
+    }   
+
+    // size of unordered_set
+    cout << "Size: " << s.size() << endl;
+
+    // check if unordered_set is empty
+    if(s.empty()) {
+        cout << "Empty" << endl;
+    } else {
+        cout << "Not Empty" << endl;
+    }
+
+    // clear unordered_set
+    s.clear();
+    
+
     return 0; 
 }
