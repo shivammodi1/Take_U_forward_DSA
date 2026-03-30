@@ -46,7 +46,6 @@ using namespace std;
 */
 
 // 0/1 Knapsack Problem (Recursive Approach)
-
 int knapsack(int wt[],int val[],int W,int n){
 
     // base case
@@ -66,3 +65,5 @@ int knapsack(int wt[],int val[],int W,int n){
     // wt[n-1] > W -> include nahi kar sakte
     return knapsack(wt,val,W,n-1);
 }
+
+// 0/1 Knapsack Problem (Memoization Approach)
