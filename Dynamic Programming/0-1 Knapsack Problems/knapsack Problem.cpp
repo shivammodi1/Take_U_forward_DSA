@@ -72,7 +72,7 @@ int knapsackRecursive(int wt[], int val[], int W, int n) {
 
 /*
 ===========================================================
-    APPROACH 2: MEMOIZATION (TOP-DOWN DP)
+    APPROACH 2: MEMOIZATION 
 ===========================================================
 
 Idea:
@@ -124,7 +124,43 @@ int knapsackMemo(int wt[], int val[], int W, int n) {
 }
 
 
+/*
+===========================================================
+                Top Down Approach 
+===========================================================
+*/
+int knapsackTopDown(int wt[], int val[], int W, int n) {
 
+    // Create dp array
+    int dp[n + 1][W + 1];
+
+    // Base Case Initialization
+    for(int i=0;i<n+1;i++) {
+        for(int j=0;j<W+1;j++) {
+            if(i == 0 || j == 0) {
+                dp[i][j] = 0;
+            }
+        }
+    }
+
+    // case diagram ---->  iterative 
+    for(int i=1;i<n+1;i++){
+        for(int j=1;j<W+1;j++){
+            // # agar current item ka weight capacity se kam ya barabar hai to include kar sakte hain
+            if(wt[i-1] <= j){
+                int include = val[i-1] + dp[i-1][j-wt[i-1]]; // # yah toh include karenge toh remaining capacity j-wt[i-1] hogi
+                int exclude = dp[i-1][j]; // # exclude karenge toh capacity same rahegi j
+                dp[i][j] = max(include, exclude);
+            }else{
+                // # current item ka weight zyada hai to include nahi kar sakte
+                dp[i][j] = dp[i-1][j];
+            }
+        }
+    }
+
+    return dp[n][W];
+}   
+ 
 
 
 /*
