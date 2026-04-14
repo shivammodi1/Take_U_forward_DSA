@@ -71,6 +71,15 @@ vector<int> LPS(string pattern){
     return lps; // return the LPS array
 }
 
+// if the question is to find the longest prefix which is also a suffix for the entire string, we can simply return lps[n-1]
+// return lps[n-1]; // longest prefix-suffix for the entire string
+
 int main(){
+    string pattern = "ABABC";
+    vector<int> lps = LPS(pattern);
+    for(int i=0; i<lps.size(); i++){
+        cout << lps[i] << " ";
+    }
+
     return 0;
 }
