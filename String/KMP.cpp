@@ -84,6 +84,8 @@ int KMP(string text,string pattern){
       }
       if(j==m){
          return i-j; // pattern found at index (i-j)
+         // for continue searching 
+         // j = lps[j-1]
       }
       else if(i<n && text[i]!=pattern[j]){
          // Mismatch after j matches
