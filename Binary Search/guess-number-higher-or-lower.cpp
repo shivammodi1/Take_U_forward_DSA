@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-using namespace std;
+using namespace std;    
 
 // # 🧠 Intuition
 // The problem follows the concept of **Binary Search**.
